@@ -27,6 +27,7 @@ function reset(){
     usedLetters = [];
     newLetter();
     reduceWordsLeft();
+    document.getElementById('currentGuesses').innerHTML = ' ';
 }
 
 
@@ -55,12 +56,17 @@ document.onkeyup = (event) =>{
         reduceWordsLeft();   
     }
 
-    if ( wordsLeft < 1 ){
-        reset();
+    if ( wordsLeft === 0 ){
         lose++;
         document.getElementById('loses').innerHTML = lose;
         alert('Sorry the correct letter was ' + randomLetter);
+        reset();
 
     }
 
 } /*closing bracket for document.onkeyup*/
+
+//these allow the numbers to be seen befroe any functions are run
+document.getElementById('guessesLeft').innerHTML = wordsLeft;
+document.getElementById('wins').innerHTML = win;
+document.getElementById('loses').innerHTML = lose;
